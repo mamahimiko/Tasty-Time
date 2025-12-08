@@ -1,0 +1,13 @@
+:root {
+  --main-color: #ffffff;
+  --color-secondary: #e7a800;
+  --color-tertiary: #0d0d0d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
