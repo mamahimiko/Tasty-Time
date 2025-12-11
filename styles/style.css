@@ -2,12 +2,313 @@
   --main-color: #ffffff;
   --color-secondary: #e7a800;
   --color-tertiary: #0d0d0d;
+  --color-point :#F34213;
 }
 
 * {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   margin: 0;
+  display: flex; 
+  flex-direction: column; 
+  min-height: 100vh;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.header {
+  width: 100%;
+  background: var(--main-color);
+}
+
+.header__wrap {
+  width: 100%;
+}
+
+.logo-area {
+  width: 94%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+p.logo {
+  width: auto;
+}
+
+p.log img {
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  height: 0; 
+  overflow: hidden; 
+  transition: height 0.4s ease-in-out; 
+  background-color: var(--color-secondary);
+  padding: 0 10px; 
+  justify-content: center;
+  position: static;
+  z-index: 100;
+}
+
+.nav.on {
+  height: 50px;
+}
+
+.nav p {
+  margin: 0px;
+  padding: 15px;
+}
+
+.nav p:nth-child(4) {
+  border-bottom: none;
+}
+
+.logo-area .fa-solid {
+  padding-top: 20px;
+  font-size: 2rem;
+  color: var(--color-tertiary);
+}
+
+.hero__section {
+  background-image:url(../img/background-img.jpg);
+  background-repeat: no-repeat;
+  background-size : cover;
+  height: 500px;
+  width: 100%;
+  background-position: 0 30%;
+}
+
+.background__text {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-point);
+  width: 90%;
+  position: relative;
+  top: 200px;
+  left: 10px;
+}
+
+.background__subText {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--main-color);
+  width: 70%;
+  position: relative;
+  top: 205px;
+  left: 10px;
+  margin: 0;
+}
+
+.footer {
+  background: var(--main-color);
+  width: 100%;
+}
+
+.footer__wrap {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.footer__wrap .text {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-secondary);
+  padding: 20px 0;
+}
+
+.followBox {
+  width: 100%;
+  padding-top: 20px;
+}
+
+.info p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.info p:nth-child(1) {
+  padding-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.info i {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-tertiary);
+}
+
+.info p a {
+  color: var(--color-tertiary);
+}
+
+.info__left,
+.info__right {
+  width: 90%;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+
+.company__info {
+  background-color:var(--color-tertiary);
+  color: var(--main-color);
+  margin: 0;
+  padding: 30px 0px 24px 10px;
+  font-size: 1rem;
+}
+
+@media (width: 768px) {
+  .nav.on {
+    height: 55px;
+  }
+
+  .nav p {
+    font-size: 1.3rem;
+  }
+
+  .background__text {
+    top: 240px;
+    font-size: 2.2rem;
+  }
+
+  .background__subText {
+    top: 250px;
+    font-size: 1.2rem;
+  }
+
+  .followBox {
+    display: flex;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  p.logo {
+    margin: 0;
+    padding: 10px 0 10px 0;
+  }
+
+  p.logo img {
+    width: 50%;
+    cursor: pointer;
+  }
+
+  i.fa-solid {
+    display: none;
+  }
+
+  .header {
+    width: 100%;
+  }
+
+  .header__wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  .logo-area {
+    width: auto;
+    margin-left: 10px;
+  }
+
+  .nav {
+    height: auto;
+    overflow: visible; 
+    transition: none;  
+    display: flex; 
+    position: static; 
+    width: 60%; 
+    background-color: transparent; 
+    padding: 0; 
+    justify-content: flex-end;
+  }
+  
+  .nav p {
+    border-bottom: none;
+    font-size: 1.4rem;
+    margin-left: 35px;
+    padding: 0;
+    line-height: 3;
+    cursor: pointer;
+  }
+
+  .background__text {
+    font-size: 2.5rem;
+    top: 220px;
+  }
+
+  .background__subText {
+    font-size: 1.6rem;
+    top: 240px;
+  }
+
+  .followBox {
+    display: flex;
+    text-align: center;
+    padding: 50px 0;
+  }
+}
+
+@media (min-width: 1920px) {
+  p.logo {
+    padding: 15px;
+  }
+
+  p.logo img {
+    width: 80%;
+  }
+
+  .nav p {
+    font-size: 2rem;
+    padding-left: 45px;
+    line-height: 3;
+  }
+
+  .background__text {
+    font-size: 4rem;
+    left: 25px;
+  } 
+
+  .background__subText {
+    font-size: 2rem;
+    left: 25px;
+  }
+
+  .hero__section {
+    height: 800px;
+  }
+
+  .footer__wrap .text {
+    font-size: 3.3rem;
+  }
+
+  .info__left img,
+  .info__right img {
+    width: 400px;
+  } 
+  
+  .info p:nth-child(1) {
+    font-size: 2.5rem;
+  }
+
+  .info i {
+    font-size: 2.7rem;
+    margin-left: 5px;
+  }
+  
+  .company__info {
+    font-size: 1.5rem;
+  }
 }
