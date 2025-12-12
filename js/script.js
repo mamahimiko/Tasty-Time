@@ -28,6 +28,9 @@ $(() => {
         type: "today",
       },
       { url: "search.php?s=christmas", type: "Christmas" },
+      { url: "search.php?s=noodles", type: "Asian style Noodle" },
+      { url: "search.php?s=salad", type: "Global Greens" },
+      { url: "search.php?s=sea", type: "Mediterranean style Seafood" },
     ];
     try {
       const promises = parameters.map((param) =>
@@ -109,4 +112,3 @@ $(() => {
 
   fetchDataInParallel();
 });
-git checkout -b feature/small-task
