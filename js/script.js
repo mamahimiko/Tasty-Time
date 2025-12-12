@@ -109,3 +109,4 @@ $(() => {
 
   fetchDataInParallel();
 });
+git checkout -b feature/small-task
