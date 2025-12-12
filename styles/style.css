@@ -172,7 +172,7 @@ p.log img {
   font-size: 1rem;
 }
 
-@media (width: 768px) {
+@media (min-width: 768px) {
   .nav.on {
     height: 55px;
   }
