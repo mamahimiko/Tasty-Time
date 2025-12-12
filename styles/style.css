@@ -40,6 +40,7 @@ body {
 
 p.logo {
   width: auto;
+  cursor: pointer;
 }
 
 p.log img {
@@ -66,16 +67,18 @@ p.log img {
 .nav p {
   margin: 0px;
   padding: 15px;
+  cursor: pointer;
 }
 
 .nav p:nth-child(4) {
   border-bottom: none;
 }
 
-.logo-area .fa-solid {
+.fa-solid {
   padding-top: 20px;
   font-size: 2rem;
   color: var(--color-tertiary);
+  cursor: pointer;
 }
 
 .hero__section {
