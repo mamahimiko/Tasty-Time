@@ -109,6 +109,65 @@ p.log img {
   margin: 0;
 }
 
+
+/*SUB_MAIN*/
+.sub__main {
+  width: 100%;
+  background: var();
+  margin-top: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sub_wrap {
+  width: 80%;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.input-area {
+  display: grid;
+}
+
+#searchBtn {
+  width: 100px;
+  margin: 0 auto;
+  padding: 8px;
+  border-radius: 5px;
+  border: 0px solid;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#user-input {
+  width: 80%;
+  margin: 0 auto 16px;
+  border-radius: 8px;
+  padding: 16px;
+  border: 0px solid;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: var(--main-color);
+}
+
+.main-text {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+
+#chat-box h2 {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+#chat-box p {
+  font-size: 1rem;
+}
+
+.recipe-card__image img {
+  width: 100%;
+}
+
 .footer {
   background: var(--main-color);
   width: 100%;
@@ -259,6 +318,14 @@ p.log img {
     top: 240px;
   }
 
+  .main-text {
+    font-size: 1.6rem;
+  }
+
+  #searchBtn {
+    font-size: 1.3rem;
+  }
+
   .followBox {
     display: flex;
     text-align: center;
@@ -293,6 +360,21 @@ p.log img {
 
   .hero__section {
     height: 800px;
+  }
+
+  .main-text {
+    font-size: 3rem;
+    margin-bottom: 32px;
+  }
+
+  #searchBtn {
+    font-size: 2rem;
+    width: 200PX;
+    padding: 8px;
+  }
+
+  .main-text {
+  font-size: 3em;
   }
 
   .footer__wrap .text {

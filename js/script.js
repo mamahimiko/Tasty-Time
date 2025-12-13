@@ -112,3 +112,55 @@ $(() => {
 
   fetchDataInParallel();
 });
+
+
+/*sub-main*/
+const container = document.getElementById("chat-box")
+
+const user_input =document.getElementById("user-input")
+
+const searchBtn = document.getElementById("searchBtn")
+
+const BASE_URL = `https://www.themealdb.com/api/json/v1/1/search.php`
+
+
+const fetchData = async() => {
+
+  const userQuery = user_input.value;
+
+  if(!userQuery) {
+    container.innerHTML = `<p> 검색어를 입력해주세요</p>`
+    return
+  }
+
+  const encodedQuery = encodeURIComponent(userQuery);
+  const API_URL = `${BASE_URL}?s=${encodedQuery}`
+
+  try {
+    const responseFetch = await fetch(API_URL)
+
+    if (!responseFetch.ok) {
+      throw new Error("Network response was not ok")
+    }
+
+    const data = await responseFetch.json()
+
+    if (data.meals && data.meals.length > 0) {
+      const firstMeal = data.meals[0];
+      container.innerHTML = `
+      <h2>Menu: ${firstMeal.strMeal}</h2>
+      <p>Category: ${firstMeal.strCategory}</p>
+      <p>Area: ${firstMeal.strArea}</p>
+      <p>Instructions: ${firstMeal.strInstructions.substring(0, 200)}...</p>
+      <p>Area: ${firstMeal.strYoutube}</p>
+      `;
+    } else {
+      container.innerHTML = `<p>검색결과없음</p>`
+    }
+
+  } catch(error) {
+    console.error("error.message")
+    container.innerHTML = `<p>데이터로드 실패 ${error.message}</p>`
+  }
+}
+searchBtn.addEventListener('click', fetchData);
