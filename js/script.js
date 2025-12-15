@@ -6,6 +6,26 @@ $(() => {
     menu.classList.toggle("on");
   });
 
+/*scroll*/
+const navClick = document.querySelectorAll(".nav p");
+
+  navClick.forEach(navP => {
+    navP.addEventListener("click",() => {
+
+    const targetId = navP.getAttribute(`data-target`);
+    const targetSection = document.getElementById(targetId);
+
+    if(targetSection) {
+      targetSection.scrollIntoView({
+        behavior :`smooth`,
+        block: `start`
+      });
+    }
+    
+  });
+});
+
+
   const callApi = async (param, type) => {
     try {
       const url = `https://www.themealdb.com/api/json/v1/1/${param}`;
@@ -84,6 +104,11 @@ $(() => {
     if (!section) {
       section = document.createElement("section");
       section.dataset.type = type;
+
+    /*scroll*/
+      const scrollId = `section-${type.toLowerCase().replace(/\s/g, `-`)}`;
+      section.id = scrollId;
+
       section.innerHTML = `<h2 class="section__title">${titleName(type)}</h2>`;
       cardSection = document.createElement("div");
       cardSection.classList.add("card-section");
@@ -129,7 +154,7 @@ const fetchData = async() => {
   const userQuery = user_input.value;
 
   if(!userQuery) {
-    container.innerHTML = `<p> 검색어를 입력해주세요</p>`
+    container.innerHTML = `<p>Search for something.</p>`
     return
   }
 
@@ -147,20 +172,32 @@ const fetchData = async() => {
 
     if (data.meals && data.meals.length > 0) {
       const firstMeal = data.meals[0];
+      const YoutubeLink = firstMeal.strYoutube;
+
+      const YoutubeHtml = YoutubeLink
+      ? `<p>
+          <a href ="${YoutubeLink}" target ="_blank" style= "color:#e7a800; text-decoration: underline;">
+            YouTube
+          </a>
+        </p>`
+      : `<p>Youtube:(No link found)</p>`;
+
+
       container.innerHTML = `
       <h2>Menu: ${firstMeal.strMeal}</h2>
       <p>Category: ${firstMeal.strCategory}</p>
       <p>Area: ${firstMeal.strArea}</p>
-      <p>Instructions: ${firstMeal.strInstructions.substring(0, 200)}...</p>
-      <p>Area: ${firstMeal.strYoutube}</p>
+      <p>Instructions: ${firstMeal.strInstructions.substring(0, 250)}...</p>
+
+      ${YoutubeHtml}
       `;
     } else {
-      container.innerHTML = `<p>검색결과없음</p>`
+      container.innerHTML = `<p>No results found.</p>`
     }
 
   } catch(error) {
     console.error("error.message")
-    container.innerHTML = `<p>데이터로드 실패 ${error.message}</p>`
+    container.innerHTML = `<p>Failed to load data.${error.message}</p>`
   }
 }
 searchBtn.addEventListener('click', fetchData);

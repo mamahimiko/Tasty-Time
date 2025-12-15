@@ -40,6 +40,7 @@ body {
 
 p.logo {
   width: auto;
+  cursor: pointer;
 }
 
 p.log img {
@@ -66,6 +67,7 @@ p.log img {
 .nav p {
   margin: 0px;
   padding: 15px;
+  cursor: pointer;
 }
 
 .nav p:nth-child(4) {
@@ -76,6 +78,7 @@ p.log img {
   padding-top: 20px;
   font-size: 2rem;
   color: var(--color-tertiary);
+  cursor: pointer;
 }
 
 .hero__section {
@@ -148,6 +151,8 @@ p.log img {
   border: 0px solid;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   background: var(--main-color);
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .main-text {
@@ -161,7 +166,7 @@ p.log img {
 }
 
 #chat-box p {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .recipe-card__image img {
@@ -184,6 +189,7 @@ p.log img {
   font-weight: 600;
   border-bottom: 1px solid var(--color-secondary);
   padding: 20px 0;
+  text-align: center;
 }
 
 .followBox {
@@ -213,9 +219,10 @@ p.log img {
 
 .info__left,
 .info__right {
-  width: 90%;
+  width: 50%;
   justify-content: space-between;
   padding-bottom: 30px;
+  margin: 0 auto;
 }
 
 .company__info {
@@ -320,10 +327,15 @@ p.log img {
 
   .main-text {
     font-size: 1.6rem;
+    margin-bottom: 40px;
   }
 
   #searchBtn {
     font-size: 1.3rem;
+  }
+
+  #user-input {
+    margin: 0 auto 30px;
   }
 
   .followBox {
@@ -397,6 +409,10 @@ p.log img {
   
   .company__info {
     font-size: 1.5rem;
+  }
+
+  #user-input {
+    font-size: 2rem;
   }
 }
 
