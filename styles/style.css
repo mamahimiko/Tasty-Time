@@ -223,6 +223,7 @@ p.log img {
   justify-content: space-between;
   padding-bottom: 30px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .company__info {
