@@ -21,7 +21,6 @@ const navClick = document.querySelectorAll(".nav p");
         block: `start`
       });
     }
-    
   });
 });
 
