@@ -2,7 +2,7 @@
   --main-color: #ffffff;
   --color-secondary: #e7a800;
   --color-tertiary: #0d0d0d;
-  --color-point :#F34213;
+  --color-point: #f34213;
 }
 
 * {
@@ -15,10 +15,10 @@ a {
 
 body {
   margin: 0;
-  display: flex; 
-  flex-direction: column; 
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .header {
@@ -50,11 +50,11 @@ p.log img {
 .nav {
   display: flex;
   width: 100%;
-  height: 0; 
-  overflow: hidden; 
-  transition: height 0.4s ease-in-out; 
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s ease-in-out;
   background-color: var(--color-secondary);
-  padding: 0 10px; 
+  padding: 0 10px;
   justify-content: center;
   position: static;
   z-index: 100;
@@ -82,9 +82,9 @@ p.log img {
 }
 
 .hero__section {
-  background-image:url(../img/background-img.jpg);
+  background-image: url(../img/background-img.jpg);
   background-repeat: no-repeat;
-  background-size : cover;
+  background-size: cover;
   height: 500px;
   width: 100%;
   background-position: 0 30%;
@@ -111,7 +111,6 @@ p.log img {
   left: 10px;
   margin: 0;
 }
-
 
 /*SUB_MAIN*/
 .sub__main {
@@ -227,13 +226,12 @@ p.log img {
 }
 
 .company__info {
-  background-color:var(--color-tertiary);
+  background-color: var(--color-tertiary);
   color: var(--main-color);
   margin: 0;
   padding: 30px 0px 24px 10px;
   font-size: 1rem;
 }
-
 
 @media (min-width: 768px) {
   .nav.on {
@@ -297,16 +295,16 @@ p.log img {
 
   .nav {
     height: auto;
-    overflow: visible; 
-    transition: none;  
-    display: flex; 
-    position: static; 
-    width: 60%; 
-    background-color: transparent; 
-    padding: 0; 
+    overflow: visible;
+    transition: none;
+    display: flex;
+    position: static;
+    width: 60%;
+    background-color: transparent;
+    padding: 0;
     justify-content: flex-end;
   }
-  
+
   .nav p {
     border-bottom: none;
     font-size: 1.4rem;
@@ -364,7 +362,7 @@ p.log img {
   .background__text {
     font-size: 4rem;
     left: 25px;
-  } 
+  }
 
   .background__subText {
     font-size: 2rem;
@@ -382,12 +380,12 @@ p.log img {
 
   #searchBtn {
     font-size: 2rem;
-    width: 200PX;
+    width: 200px;
     padding: 8px;
   }
 
   .main-text {
-  font-size: 3em;
+    font-size: 3em;
   }
 
   .footer__wrap .text {
@@ -397,8 +395,8 @@ p.log img {
   .info__left img,
   .info__right img {
     width: 400px;
-  } 
-  
+  }
+
   .info p:nth-child(1) {
     font-size: 2.5rem;
   }
@@ -407,7 +405,7 @@ p.log img {
     font-size: 2.7rem;
     margin-left: 5px;
   }
-  
+
   .company__info {
     font-size: 1.5rem;
   }
@@ -431,10 +429,10 @@ p.log img {
 .card-section {
   padding: 16px;
   padding-bottom: 36px;
-  display: flex; 
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 16px;   
+  gap: 16px;
 }
 
 .recipe-card {
@@ -443,14 +441,14 @@ p.log img {
   width: 320px;
   background: --main-color;
   border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .recipe-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .recipe-card-link {
@@ -459,10 +457,17 @@ p.log img {
   display: inline-block;
 }
 
-.recipe-card__image {
+.recipe-card__image-container {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  background-size: cover;
+}
+
+.fa-heart {
+  margin: 5px;
+  font-size: 36px;
+  float: right;
+  color: var(--color-point);
 }
 
 .recipe-card__content {
@@ -487,3 +492,16 @@ p.log img {
   display: inline-block;
 }
 
+.favorite__title {
+  font-size: 3.3 rem;
+  margin: 0px;
+  padding: 9px 0;
+  text-align: center;
+}
+
+.delete-toggle {
+  margin: 5px;
+  font-size: 36px;
+  float: right;
+  color: var(--color-tertiary);
+}

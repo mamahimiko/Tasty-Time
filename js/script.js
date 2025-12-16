@@ -6,24 +6,22 @@ $(() => {
     menu.classList.toggle("on");
   });
 
-/*scroll*/
-const navClick = document.querySelectorAll(".nav p");
+  /*scroll*/
+  const navClick = document.querySelectorAll(".nav p");
 
-  navClick.forEach(navP => {
-    navP.addEventListener("click",() => {
+  navClick.forEach((navP) => {
+    navP.addEventListener("click", () => {
+      const targetId = navP.getAttribute(`data-target`);
+      const targetSection = document.getElementById(targetId);
 
-    const targetId = navP.getAttribute(`data-target`);
-    const targetSection = document.getElementById(targetId);
-
-    if(targetSection) {
-      targetSection.scrollIntoView({
-        behavior :`smooth`,
-        block: `start`
-      });
-    }
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: `smooth`,
+          block: `start`,
+        });
+      }
+    });
   });
-});
-
 
   const callApi = async (param, type) => {
     try {
@@ -61,6 +59,40 @@ const navClick = document.querySelectorAll(".nav p");
     }
   };
 
+  //local strage helper
+  const saveFavorites = (list) =>
+    localStorage.setItem("favorites", JSON.stringify(list));
+  const getFavorites = () =>
+    JSON.parse(localStorage.getItem("favorites") || "[]");
+  const isInFavorites = (recipeId) => {
+    const fav = getFavorites();
+    return fav.some((m) => m.recipeId === recipeId);
+  };
+
+  const addToFavorites = (meal) => {
+    const fav = getFavorites();
+    if (fav.some((m) => m.recipeId === meal.idMeal)) {
+      alert("Already in favorites.");
+      return;
+    }
+
+    const favRecipe = {
+      recipeId: meal.idMeal,
+      title: meal.strMeal,
+      image: meal.strMealThumb,
+      link: meal.strSource || meal.strYoutube,
+    };
+
+    fav.push(favRecipe);
+    saveFavorites(fav);
+  };
+
+  const removeFromFavorites = (recipesId) => {
+    const fav = getFavorites();
+    const updateFav = fav.filter((m) => m.recipeId !== recipesId);
+    saveFavorites(updateFav);
+  };
+
   const createCard = (meals) => {
     const link = document.createElement("a");
     link.href = meals.strSource || meals.strYoutube;
@@ -70,7 +102,12 @@ const navClick = document.querySelectorAll(".nav p");
     card.classList.add("recipe-card");
 
     card.innerHTML = `
-      <img class="recipe-card__image" src="${meals.strMealThumb}">
+      <div 
+      class="recipe-card__image-container" 
+      style="background-image: url('${meals.strMealThumb}')">
+      <i class="fav-icon fa-heart"></i>
+      </div>
+      
       <div class="recipe-card__content">
         <h3 class="recipe-card__title">${meals.strMeal}</h3>
         <p class="recipe-card__text">${meals.strInstructions.substring(
@@ -79,6 +116,25 @@ const navClick = document.querySelectorAll(".nav p");
         )}...</p>
       </div>
     `;
+
+    const favIcon = card.querySelector(".fav-icon");
+    favIcon.classList.add(
+      isInFavorites(meals.idMeal) ? "fa-solid" : "fa-regular"
+    );
+
+    favIcon.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (isInFavorites(meals.idMeal)) {
+        removeFromFavorites(meals.idMeal);
+        favIcon.classList.replace("fa-solid", "fa-regular");
+      } else {
+        addToFavorites(meals);
+        favIcon.classList.replace("fa-regular", "fa-solid");
+      }
+    });
+
     link.appendChild(card);
     return link;
   };
@@ -104,7 +160,7 @@ const navClick = document.querySelectorAll(".nav p");
       section = document.createElement("section");
       section.dataset.type = type;
 
-    /*scroll*/
+      /*scroll*/
       const scrollId = `section-${type.toLowerCase().replace(/\s/g, `-`)}`;
       section.id = scrollId;
 
@@ -137,50 +193,46 @@ const navClick = document.querySelectorAll(".nav p");
   fetchDataInParallel();
 });
 
-
 /*sub-main*/
-const container = document.getElementById("chat-box")
+const container = document.getElementById("chat-box");
 
-const user_input =document.getElementById("user-input")
+const user_input = document.getElementById("user-input");
 
-const searchBtn = document.getElementById("searchBtn")
+const searchBtn = document.getElementById("searchBtn");
 
-const BASE_URL = `https://www.themealdb.com/api/json/v1/1/search.php`
+const BASE_URL = `https://www.themealdb.com/api/json/v1/1/search.php`;
 
-
-const fetchData = async() => {
-
+const fetchData = async () => {
   const userQuery = user_input.value;
 
-  if(!userQuery) {
-    container.innerHTML = `<p>Search for something.</p>`
-    return
+  if (!userQuery) {
+    container.innerHTML = `<p>Search for something.</p>`;
+    return;
   }
 
   const encodedQuery = encodeURIComponent(userQuery);
-  const API_URL = `${BASE_URL}?s=${encodedQuery}`
+  const API_URL = `${BASE_URL}?s=${encodedQuery}`;
 
   try {
-    const responseFetch = await fetch(API_URL)
+    const responseFetch = await fetch(API_URL);
 
     if (!responseFetch.ok) {
-      throw new Error("Network response was not ok")
+      throw new Error("Network response was not ok");
     }
 
-    const data = await responseFetch.json()
+    const data = await responseFetch.json();
 
     if (data.meals && data.meals.length > 0) {
       const firstMeal = data.meals[0];
       const YoutubeLink = firstMeal.strYoutube;
 
       const YoutubeHtml = YoutubeLink
-      ? `<p>
+        ? `<p>
           <a href ="${YoutubeLink}" target ="_blank" style= "color:#e7a800; text-decoration: underline;">
             YouTube
           </a>
         </p>`
-      : `<p>Youtube:(No link found)</p>`;
-
+        : `<p>Youtube:(No link found)</p>`;
 
       container.innerHTML = `
       <h2>Menu: ${firstMeal.strMeal}</h2>
@@ -191,12 +243,11 @@ const fetchData = async() => {
       ${YoutubeHtml}
       `;
     } else {
-      container.innerHTML = `<p>No results found.</p>`
+      container.innerHTML = `<p>No results found.</p>`;
     }
-
-  } catch(error) {
-    console.error("error.message")
-    container.innerHTML = `<p>Failed to load data.${error.message}</p>`
+  } catch (error) {
+    console.error("error.message");
+    container.innerHTML = `<p>Failed to load data.${error.message}</p>`;
   }
-}
-searchBtn.addEventListener('click', fetchData);
+};
+searchBtn.addEventListener("click", fetchData);
