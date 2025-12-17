@@ -1,19 +1,3 @@
-const navClick = document.querySelectorAll(".nav p");
-
-navClick.forEach((navP) => {
-  navP.addEventListener("click", () => {
-    const targetId = navP.getAttribute(`data-target`);
-    const targetSection = document.getElementById(targetId);
-
-    if (targetSection) {
-      targetSection.scrollIntoView({
-        behavior: `smooth`,
-        block: `start`,
-      });
-    }
-  });
-});
-
 window.addEventListener("DOMContentLoaded", () => {
   const favContainer = document.getElementById("favorites");
   const favs = JSON.parse(localStorage.getItem("favorites") || "[]");
@@ -40,7 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
         <i class="fa-solid fa-xmark delete-toggle"></i>
         </div>
 
-        <div class="recipe-card__content">
+        <div class="recipe-card__content-fav">
           <h3 class="recipe-card__title">${meal.title}</h3>
         </div>
       `;
