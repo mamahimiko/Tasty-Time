@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("JosefinSans-Regular.woff2") format("woff2"),
+    url("JosefinSans-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Crimson Text";
+  src: url("CrimsonText-Regular.woff2") format("woff2"),
+    url("CrimsonText-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
