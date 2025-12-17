@@ -495,7 +495,7 @@ a.logo {
     width: 80%;
   }
 
-  .nav p {
+  .nav p .nav a {
     font-size: 2rem;
     padding-left: 45px;
     line-height: 3;
