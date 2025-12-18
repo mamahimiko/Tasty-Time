@@ -18,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Josefin Sans", "Arial Narrow", Arial, sans-serif;
 }
 
 .header {
@@ -298,9 +298,9 @@ a.logo {
 
 .section__title {
   font-size: 26px;
-  margin: 0px;
   padding: 9px 0;
   text-align: center;
+  font-weight: bold;
 }
 
 .card-section {
@@ -362,6 +362,7 @@ a.logo {
 
 .recipe-card__text {
   font-size: 0.9rem;
+  font-family: "Crimson Text", serif;
   color: #555;
   line-height: 1.4;
 }
