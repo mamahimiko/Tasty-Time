@@ -131,6 +131,11 @@ a.logo {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.sub__main .fa-heart {
+  font-size: 36px;
+  color: red;
+}
+
 .sub_wrap {
   width: 80%;
   margin: 0 auto 40px;
@@ -243,7 +248,48 @@ a.logo {
   font-size: 1rem;
 }
 
-//main content
+/* favorites-sub main */
+
+#chat-box-favorites {
+  padding: 16px;
+  padding-bottom: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.fav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  background: var(--main-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 16px;
+  display: inline-block;
+}
+
+.fav p {
+  margin: 0px;
+  padding: 0;
+}
+
+.deleteToggle {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 32px;
+    color: var(--color-tertiary);
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* main content */
 
 .main {
   padding: 60px 24px;
@@ -277,7 +323,7 @@ a.logo {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.recipe-card:hover {
+.recipe-card:hover , .fav:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
@@ -295,7 +341,7 @@ a.logo {
   position: relative;
 }
 
-.fa-heart {
+.main .fa-heart {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -320,16 +366,10 @@ a.logo {
   line-height: 1.4;
 }
 
-.recipe-card-link {
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;
-}
-
 .favorite__title {
   font-size: 3.3 rem;
   margin: 0px;
-  padding: 9px 0;
+  padding: 60px 0 30px;
   text-align: center;
 }
 
@@ -346,6 +386,10 @@ a.logo {
 .recipe-card__content-fav {
   height: 120px;
   padding: 1rem;
+}
+
+.empty {
+  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -374,6 +418,10 @@ a.logo {
   }
 
   .card-section {
+    justify-content: start;
+  }
+
+  #chat-box-favorites {
     justify-content: start;
   }
 
@@ -436,7 +484,7 @@ a.logo {
     transition: none;
     display: flex;
     position: static;
-    width: 60%;
+    width: 70%;
     background-color: transparent;
     padding: 0;
     justify-content: flex-end;
