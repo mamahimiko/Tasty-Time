@@ -123,6 +123,7 @@ a.logo {
 }
 
 /*SUB_MAIN*/
+
 .sub__main {
   width: 100%;
   background: var();
@@ -280,13 +281,13 @@ a.logo {
 }
 
 .deleteToggle {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    font-size: 32px;
-    color: var(--color-tertiary);
-    z-index: 10;
-    cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 32px;
+  color: var(--color-tertiary);
+  z-index: 10;
+  cursor: pointer;
 }
 
 /* main content */

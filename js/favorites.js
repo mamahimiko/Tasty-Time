@@ -105,10 +105,8 @@ window.addEventListener("DOMContentLoaded", () => {
           `
         }
       })
-      
     container.appendChild(div)
     });
   }
 });
 
-/*DOBIN*/
