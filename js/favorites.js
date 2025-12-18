@@ -64,16 +64,16 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("DOMContentLoaded", () => {
 
   const container = document.getElementById("chat-box-favorites");
-  const FAVS = JSON.parse(localStorage.getItem("myRecipes") || "[]");
+  const favs = JSON.parse(localStorage.getItem("myRecipes") || "[]");
 
   if (!container) return;
 
   container.innerHTML = "";
 
-  if(FAVS.length === 0) {
+  if(favs.length === 0) {
     container.innerHTML = `<p class ="empty">No favorites Youtube link yet.</p>`
   } else {
-    FAVS.forEach(recipe => {
+    favs.forEach(recipe => {
       const div = document.createElement("div");
       div.className = "fav";
 
