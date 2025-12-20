@@ -200,20 +200,20 @@ const user_input = document.getElementById("user-input");
 
 const searchBtn = document.getElementById("searchBtn");
 
-const heart_icon = document.getElementsByClassName("fav-icon fa-heart")
+const heart_icon = document.getElementsByClassName("fav-icon fa-heart");
 
 const BASE_URL = `https://www.themealdb.com/api/json/v1/1/search.php`;
 
-const heartIcon = document.getElementsByClassName(".fav-icon fa-heart")
+const heartIcon = document.getElementsByClassName(".fav-icon fa-heart");
 
 const addFav = (recipe) => {
   let favorites = JSON.parse(localStorage.getItem("myRecipes")) || [];
-  const isAlreadyFav = favorites.some(fav => fav.idMeal === recipe.idMeal);
+  const isAlreadyFav = favorites.some((fav) => fav.idMeal === recipe.idMeal);
 
   if (!isAlreadyFav) {
     favorites.push(recipe);
     localStorage.setItem("myRecipes", JSON.stringify(favorites));
-  } 
+  }
 };
 
 const fetchData = async () => {
@@ -259,17 +259,14 @@ const fetchData = async () => {
 
       const heartIcon = document.getElementById("fav-heart");
       let favorites = JSON.parse(localStorage.getItem("myRecipes")) || [];
-      if (favorites.some(fav => fav.idMeal === firstMeal.idMeal)) {
+      if (favorites.some((fav) => fav.idMeal === firstMeal.idMeal)) {
         heartIcon.classList.replace("fa-regular", "fa-solid");
       }
       heartIcon.addEventListener("click", () => {
-        
         if (heartIcon.classList.contains("fa-regular")) {
-        
           heartIcon.classList.replace("fa-regular", "fa-solid");
-          addFav(firstMeal); 
+          addFav(firstMeal);
         } else {
-          
           heartIcon.classList.replace("fa-solid", "fa-regular");
           removeFromFavorites(firstMeal.idMeal);
         }
@@ -284,12 +281,8 @@ const fetchData = async () => {
 };
 searchBtn.addEventListener("click", fetchData);
 
-
 const removeFromFavorites = (idMeal) => {
   let favorites = JSON.parse(localStorage.getItem("myRecipes")) || [];
-  favorites = favorites.filter(fav => fav.idMeal !== idMeal);
+  favorites = favorites.filter((fav) => fav.idMeal !== idMeal);
   localStorage.setItem("myRecipes", JSON.stringify(favorites));
 };
-
-
-
